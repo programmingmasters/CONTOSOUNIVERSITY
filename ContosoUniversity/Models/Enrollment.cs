@@ -1,0 +1,26 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ContosoUniversity.Models
+{
+    public enum Grade
+    {
+        A,B,C,D,E,F
+    }
+
+    public class Enrollment
+    {
+        public int EnrollmentID { get; set; }
+
+        public int CourseID { get; set; }
+
+        public int StudentID { get; set; }
+
+        [DisplayFormat(NullDisplayText = "No grade")]
+        public Grade? Grade   { get; set; }  //It is 'payload' in the database
+
+        public Course Course { get; set; }
+        public Student Student { get; set; }
+    }
+}
+
+// Note: 'payload' means that the Enrollment table contains additional data besides FKs for the joined tables
